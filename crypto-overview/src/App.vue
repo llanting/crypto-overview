@@ -20,7 +20,7 @@ export default {
     async fetchData() {
       this.cryptoItems = null
       const res = await fetch(
-          process.env.VUE_APP_API_URL, {
+          `${process.env.VUE_APP_API_URL}/assets?limit=50`, {
             headers: new Headers({
               "Accept-Encoding": "gzip"
             })
