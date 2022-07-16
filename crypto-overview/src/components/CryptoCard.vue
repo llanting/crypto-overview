@@ -1,6 +1,6 @@
 <template>
   <li class="crypto-card">
-    {{name}}
+    {{crypto.name}}
   </li>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: 'CryptoCard',
   props: {
-    name: String
+    crypto: Object
   }
 }
 </script>

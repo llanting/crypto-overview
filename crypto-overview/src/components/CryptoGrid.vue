@@ -1,8 +1,9 @@
 <template>
   <section class="crypto-grid">
     <h1>See all crypto</h1>
-    <ul>
-      <CryptoCard name="Bitcoin" />
+    <p v-if="!items">Loading...</p>
+    <ul v-if="items">
+      <CryptoCard v-for="item in items" :key="item.id" :crypto="item" />
     </ul>
   </section>
 </template>
@@ -13,7 +14,7 @@ import CryptoCard from './CryptoCard'
 export default {
   name: 'CryptoGrid',
   props: {
-    msg: String
+    items: Array
   },
   components: {
     CryptoCard
