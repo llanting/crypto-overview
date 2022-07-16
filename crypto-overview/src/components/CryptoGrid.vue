@@ -4,7 +4,7 @@
     {{prices}}
     <p v-if="!items">Loading...</p>
     <ul v-if="items">
-      <CryptoCard v-for="item in items" :key="item.id" :crypto="item" />
+      <CryptoCard v-for="item in items" :key="item.id" :crypto="item" :newPrice="prices[item.id]" />
     </ul>
   </section>
 </template>
@@ -20,6 +20,9 @@ export default {
   },
   components: {
     CryptoCard
+  },
+  mounted() {
+    console.log(this.prices.bitcoin);
   }
 }
 </script>

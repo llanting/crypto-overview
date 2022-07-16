@@ -39,7 +39,7 @@ export default {
       const pricesWs = new WebSocket(`wss://ws.coincap.io/prices?assets=${this.cryptoIds.join(",")}`)
 
       pricesWs.onmessage = (msg) => {
-        this.cryptoPrices = msg.data;
+        this.cryptoPrices = JSON.parse(msg.data);
       }
     }
   },
