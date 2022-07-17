@@ -1,7 +1,7 @@
 # Crypto-overview
 
 ## Project background
-This project uses the CoinCap Api to show 50 crypto-assets with the highest marketcap value. Additionally, the CoinCap Websocket is used to update the rates when they change. I enjoyed working on it and I'm looking forward to discussing it with you!
+This project uses the CoinCap Api to show 50 crypto-assets with the highest marketcap value. Additionally, the CoinCap Websocket is used to update the rates when they change.
 
 ## Project setup
 The project is made in VueJS version 3 using the VueJS starter kit. To apply styling I used SCSS and variables.
