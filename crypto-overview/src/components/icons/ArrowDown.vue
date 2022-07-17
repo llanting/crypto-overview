@@ -1,0 +1,41 @@
+<template>
+  <svg
+      :class="up ? 'up' : 'down'"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+        class="fill"
+        d="M19.4102 9.94922L19.1094 9.64844C18.8945 9.43359 18.5938 9.43359 18.3789 9.64844L10.7305 17.2969V1.14062C10.7305 0.882812 10.4727 0.625 10.2148 0.625H9.78516C9.48438 0.625 9.26953 0.882812 9.26953 1.14062V17.2969L1.57812 9.64844C1.36328 9.43359 1.0625 9.43359 0.847656 9.64844L0.546875 9.94922C0.332031 10.1641 0.332031 10.4648 0.546875 10.6797L9.61328 19.7461C9.82812 19.9609 10.1289 19.9609 10.3438 19.7461L19.4102 10.6797C19.625 10.4648 19.625 10.1641 19.4102 9.94922Z"
+        fill="white"
+    />
+  </svg>
+</template>
+
+<script>
+export default {
+  name: 'ArrowDown',
+  props: {
+    up: Boolean
+  }
+}
+</script>
+
+<style scoped lang="scss">
+svg {
+  width: 15px;
+  height: 15px;
+  &.up {
+    transform: rotate(180deg);
+    path {
+      fill: green;
+    }
+  }
+  path {
+    fill: red;
+  }
+}
+</style>

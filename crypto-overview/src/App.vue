@@ -1,14 +1,21 @@
 <template>
-  <CryptoGrid :items="cryptoItems" :prices="cryptoPrices" />
+  <h1>Crypto overview</h1>
+  <p v-if="!cryptoItems">Loading...</p>
+  <!--  First four items-->
+  <CryptoGrid v-if="cryptoItems" :items="[...cryptoItems].splice(0, 4)" :prices="cryptoPrices" />
+  <!-- Rest of the list -->
+  <CryptoList v-if="cryptoItems" :items="[...cryptoItems].splice(4).sort(sortAlphabetically)" :prices="cryptoPrices" />
 </template>
 
 <script>
 import CryptoGrid from './components/CryptoGrid.vue'
+import CryptoList from "@/components/CryptoList";
 
 export default {
   name: 'App',
   components: {
-    CryptoGrid
+    CryptoGrid,
+    CryptoList
   },
   data() {
     return {
@@ -36,16 +43,31 @@ export default {
       this.connectToWebSocket()
     },
     connectToWebSocket() {
-      const pricesWs = new WebSocket(`wss://ws.coincap.io/prices?assets=${this.cryptoIds.join(",")}`)
+      const pricesWs = new WebSocket(`${process.env.VUE_APP_WEBSOCKET_URL}/prices?assets=${this.cryptoIds.join(",")}`)
 
       pricesWs.onmessage = (msg) => {
         this.cryptoPrices = JSON.parse(msg.data);
       }
+    },
+    sortAlphabetically(a, b) {
+      if (a.id < b.id) {
+        return -1;
+      }
+      if (a.id > b.id) {
+        return 1;
+      }
+      return 0;
     }
   },
 
   mounted() {
     this.fetchData()
-  }
+  },
 }
 </script>
+
+<style>
+@import "../assets/styles/variables.css";
+@import "../assets/styles/global.css";
+
+</style>

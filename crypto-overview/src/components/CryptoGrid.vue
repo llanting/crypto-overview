@@ -1,12 +1,8 @@
 <template>
-  <section class="crypto-grid">
-    <h1>See all crypto</h1>
-    {{prices}}
-    <p v-if="!items">Loading...</p>
-    <ul v-if="items">
+  <h2>Highest marketcap</h2>
+    <ul v-if="items" class="crypto-grid">
       <CryptoCard v-for="item in items" :key="item.id" :crypto="item" :newPrice="prices[item.id]" />
     </ul>
-  </section>
 </template>
 
 <script>
@@ -20,9 +16,22 @@ export default {
   },
   components: {
     CryptoCard
-  },
-  mounted() {
-    console.log(this.prices.bitcoin);
   }
 }
 </script>
+
+<style scoped>
+.crypto-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+/* From desktop */
+@media (min-width: 979px) {
+  .crypto-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+</style>
